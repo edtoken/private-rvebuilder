@@ -1,0 +1,89 @@
+{
+  "version": "0.0.0",
+  "name": "rvebuilder",
+  "description": "Simple React email html builder component",
+  "homepage": "https://github.com/edtoken/rvebuilder",
+  "author": "Eduard Titov <editied@gmail.com> (https://github.com/edtoken)",
+  "bugs": "https://github.com/edtoken/rvebuilder/issues",
+  "contributors": [],
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha --colors --require babel-register --require ./test/helpers.js --require ./test/dom.js --recursive",
+    "test-watch": "watch-run -i -p 'src/**/*.jsx,src/**/*.js,test/**/*.spec.js' npm run testz",
+    "lint": "./node_modules/eslint/bin/eslint.js --fix --ext js,jsx ./src",
+    "tdd": "npm test -- --watch",
+    "dev-watch": "PUBLISH=1 NODE_ENV=development DEVELOPMENT_PORT=5009 webpack-dev-server --progress --hot --port=5009  --config webpack.config.js",
+    "dev-build": "PUBLISH=1 NODE_ENV=development webpack --config webpack.config.js",
+    "build": "NODE_ENV=production webpack --config webpack.config.js",
+    "build-publish": "PUBLISH=1 NODE_ENV=production webpack --config webpack.config.js",
+    "deploy": "gh-pages -d dist"
+  },
+  "keywords": [
+    "reactjs",
+    "email html",
+    "builder",
+    "email builder"
+  ],
+  "license": "MIT",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://raw.githubusercontent.com/edtoken/rvebuilder/master/LICENSE"
+    }
+  ],
+  "dependencies": {
+    "font-awesome": "^4.7.0",
+    "lodash": "^4.17.4",
+    "npm": "^5.4.1",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-color": "^2.13.8",
+    "react-dom": "^15.6.1",
+    "react-redux": "^5.0.6",
+    "react-tinymce": "^0.6.0",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0",
+    "tinymce": "^4.6.7"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.1",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "chai": "^4.1.2",
+    "copy-webpack-plugin": "^4.0.1",
+    "css-loader": "^0.28.7",
+    "enzyme": "^2.9.1",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-config-standard-jsx": "^4.0.2",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-react": "^7.4.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "file-loader": "^0.11.2",
+    "gh-pages": "^1.0.0",
+    "html-webpack-plugin": "^2.30.1",
+    "jsdom": "^11.2.0",
+    "mocha": "^3.5.3",
+    "node-sass": "^4.5.3",
+    "react-addons-test-utils": "^15.6.0",
+    "redux-devtools": "^3.4.0",
+    "redux-devtools-dock-monitor": "^1.1.2",
+    "redux-devtools-log-monitor": "^1.3.0",
+    "sass-loader": "^6.0.6",
+    "sinon": "^3.2.1",
+    "standard": "^10.0.3",
+    "style-loader": "^0.18.2",
+    "url-loader": "^0.5.9",
+    "watch-run": "^1.2.5",
+    "webpack": "^3.5.6",
+    "webpack-dev-server": "^2.8.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/edtoken/rvebuilder"
+  }
+}

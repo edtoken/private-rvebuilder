@@ -1,0 +1,387 @@
+@import "config";
+@import "mixin";
+@import "reset";
+
+.RVEBuilder {
+  position: relative;
+  min-height: 200px;
+  display: table;
+  width: 100%;
+  background: $color-bg-main;
+
+  &:after {
+    content: "";
+    display: block;
+    clear: left;
+  }
+}
+
+.RVEBuilder-Loader {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  background: $color-bg-light;
+  text-align: center;
+  padding: 1rem;
+}
+
+.RVEBuilder-Main,
+.RVEBuilder-Panel {
+  display: table-cell;
+  height: 100%;
+  vertical-align: top;
+}
+
+.RVEBuilder-Main {
+  width: 70%;
+  border-right: 1px solid $color-border-base;
+
+  & > table {
+
+  }
+}
+
+.RVEBuilder-DraggableItem {
+  position: relative;
+
+  &--draggable {
+
+  }
+
+  &--active {
+    cursor: pointer;
+
+    outline: 2px solid $color-blue-light-2;
+    background: $color-blue-light-bg;
+
+    &:after {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+
+      background: $color-blue-light-bg;
+    }
+
+    .RVEBuilder-DraggableItem-Buttons {
+      display: block;
+    }
+  }
+
+  &--dragging {
+    background: $color-blue-light-2;
+  }
+
+  &--over {
+    position: relative;
+
+    &:before {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      width: 100%;
+
+      content: "here";
+      color: #fff;
+      display: block;
+      text-align: center;
+      background: $color-blue-light;
+      font-size: .5rem;
+    }
+  }
+
+  .RVEBuilder-DraggableItem-Buttons {
+    z-index: 1;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+}
+
+.RVEBuilderMain-Element {
+
+  &--body {
+    padding: 1rem;
+  }
+
+  &--row {
+    padding: .3rem 1rem;
+  }
+
+  &--row > table tbody > tr > td {
+    padding: .2rem;
+  }
+
+  &--column {
+    padding: .2rem;
+  }
+
+  &--columnempty {
+    color: #333;
+    background: $color-blue-light-3;
+    outline: $color-blue-light dashed 1px;
+    font-size: .8rem;
+  }
+
+  &--active {
+    //outline: 2px solid $color-blue-light-2;
+    //background: $color-blue-light-bg;
+  }
+
+  .RVEBuilderMain-Element {
+    margin: .1rem;
+  }
+}
+
+.RVEBuilder-Panel {
+  width: 30%;
+  background: #F8F8F8;
+}
+
+.RVEBuilderTabs {
+  display: table;
+  width: 100%;
+  text-align: center;
+
+  &-Tab {
+    padding: .5rem;
+    display: table-cell;
+    text-transform: uppercase;
+    vertical-align: top;
+    background: $color-dark-light-2;
+    font-size: .8rem;
+
+    &:hover {
+      cursor: pointer;
+      background: #F7F7F7;
+    }
+    &--active {
+      background: #F7F7F7;
+    }
+  }
+}
+
+.RVEBuilderPanel {
+  background: #F9F9F9;
+
+  &-Content {
+    padding: .5rem 0;
+  }
+
+  &-Element {
+    background: #fff;
+    text-align: center;
+    border: 1px solid transparent;
+    border-radius: .2rem;
+    margin: .2rem;
+
+    &--element {
+      vertical-align: top;
+      display: inline-block;
+      width: 31%;
+      height: 6rem;
+    }
+
+    &:hover {
+      cursor: pointer;
+      border: 1px dashed #2FAADE;
+      box-shadow: 0 5px 9px rgba(0, 0, 0, .35);
+    }
+  }
+
+  &-Property {
+
+    &--body {
+
+    }
+  }
+
+  &-AdvancedWrapper {
+    position: relative;
+  }
+
+  &-AdvancedWrapper--active {
+    .RVEBuilderPanel-AdvancedWrapperState {
+      color: $color-dark-base;
+    }
+  }
+
+  &-AdvancedWrapperState {
+    color: $color-dark-light;
+    font-size: .8rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1;
+  }
+
+  &-ElementHeader {
+    display: table;
+    width: 100%;
+  }
+  &-ElementTypeName {
+    display: table-cell;
+    width: 30%;
+    text-align: left;
+    text-transform: uppercase;
+    padding: .3rem;
+    font-weight: bold;
+  }
+  &-ElementActions {
+    width: 70%;
+    display: table-cell;
+    text-align: right;
+
+    & > span > i {
+      display: inline-block;
+      vertical-align: top;
+      padding: .5rem;
+
+      &:hover {
+        color: $color-red-dark;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &-CategoryTitle {
+    color: $color-dark-2;
+    text-transform: uppercase;
+    text-align: left;
+    font-size: .8rem;
+    padding: .1rem .5rem;
+    background: $color-dark-light-3;
+  }
+}
+
+.RVEBuilderPropertyContainer {
+  position: relative;
+  display: table;
+  width: 100%;
+
+  padding: 1rem .3rem;
+  border-bottom: 1px solid $color-dark-light;
+
+  &-Clear {
+    //todo
+    display: none;
+    position: absolute;
+    font-size: .8rem;
+    left: .4rem;
+    top: 41%;
+
+    &:hover {
+      color: $color-red-dark;
+      cursor: pointer;
+    }
+  }
+
+  &-Column {
+    padding: .1rem .5rem .1rem 1rem;
+
+    display: table-cell;
+    vertical-align: middle;
+
+    &--label {
+      width: 30%;
+      color: $color-dark-2;
+      text-align: left;
+      font-size: .8rem;
+    }
+    &--data {
+      width: 70%;
+      text-align: right;
+    }
+
+  }
+
+  .github-picker {
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+
+    & > div {
+      display: none;
+    }
+    & > span > div {
+      width: 1rem !important;
+      height: 1rem !important;
+    }
+  }
+  .slider-picker {
+    & > div > div {
+      margin-top: 0 !important;
+    }
+  }
+}
+
+.RVEBuilderPanelButtons {
+  display: table;
+  width: 100%;
+  border-bottom: 1px solid #c8c8c8;
+
+  &-Button {
+    outline: none;
+    box-shadow: none;
+    border: none;
+    width: 50%;
+    display: table-cell;
+    height: 100%;
+    vertical-align: top;
+
+    background: #D4D7DA;
+    font-size: .8rem;
+
+    &:focus,
+    &:active {
+      outline: none;
+    }
+
+    &:hover {
+      cursor: pointer;
+      background: #F7F7F7;
+    }
+
+    &--clear {
+      color: #fff;
+      background: $color-red;
+
+      &:hover {
+        background: $color-red-dark;
+      }
+    }
+  }
+}
+
+.RVEBuilder-SideSize {
+  @include no-user-select;
+
+  & > i {
+    @include no-user-select;
+
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 .1rem;
+
+    &:hover {
+      cursor: pointer;
+      color: $color-red-dark;
+    }
+  }
+  & > input {
+    @include no-user-select;
+
+    width: 2rem;
+    text-align: center;
+    border: 1px solid $color-dark-light;
+    border-radius: 3px;
+    font-size: .8rem;
+  }
+}

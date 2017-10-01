@@ -1,0 +1,15 @@
+{
+  "fix": true,
+  "ecmaFeatures": {
+    "jsx": true,
+    "modules": true
+  },
+  "parser": "babel-eslint",
+  "plugins": [
+    "react"
+  ],
+  "extends": [
+    "standard",
+    "standard-jsx"
+  ]
+}

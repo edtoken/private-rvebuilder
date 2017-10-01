@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Example:  basic-usage</title>
+</head>
+<body>
+
+
+<style>
+  pre {
+    font-size: 0.8rem;
+    line-height: normal;
+    padding: .5rem !important;
+  }
+</style>
+<div class="jumbotron" style="padding: 4rem 2rem 2rem;">
+  <div class="text-center">
+    <h1>Example:  basic-usage</h1>
+    <h4>version: 0.0.0</h4>
+    <div>
+      <a class="github-button"
+         href="https://github.com/edtoken/rvebuilder/subscription"
+         data-size="large"
+         data-show-count="true"
+         aria-label="Watch edtoken/rvebuilder on GitHub">Watch</a>
+      &nbsp;
+      <a class="github-button"
+         href="https://github.com/edtoken/rvebuilder"
+         data-size="large"
+         data-show-count="true"
+         aria-label="Star edtoken/rvebuilder on GitHub">Star</a>
+    </div>
+    <p>Simple React email html builder component</p>
+    <hr>
+
+    <h4>author: Eduard Titov <editied@gmail.com> (https://github.com/edtoken)</h4>
+    <h4>license: MIT</h4>
+    <h4>github: <a target="_blank" href="https://github.com/edtoken/rvebuilder">rvebuilder</a></h4>
+
+    <hr/>
+    <div>
+      <ul class="nav justify-content-center">
+        <script>
+          var examplelinks = '/rvebuilder/dist/basic-usage-index.html'.split(',')
+          examplelinks.forEach(function (linkPath) {
+            var exampleName = linkPath.replace('.html', '').replace('/', '')
+            document.write(' <li class="nav-item"><a class="nav-link" href="' + linkPath + '">' + exampleName + '</a></li>')
+          })
+        </script>
+      </ul>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <header>
+        <h2>Result:</h2>
+      </header>
+      <div id="app-wrapper" style="border:1px solid #888"></div>
+    </div>
+  </div>
+</div>
+
+<div style="background: #eceeef;padding:2rem 0;margin:2rem 0;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <header>
+          <h2>Source code:</h2>
+        </header>
+        <pre class="prettyprint"><code class="lang-jsx">/**
+ * Example basic demo
+ */
+
+/**
+ *
+ * Step 1 of 2
+ * The store should know how to handle actions coming from the form components.
+ * To enable this, we need to pass the builderReducer to your store.
+ * It serves for all of your form components, so you only have to pass it once.
+ *
+ */
+
+import { combineReducers, createStore } from &#39;redux&#39;
+import { Builder as RVEBuilder, reducer as builderReducer } from &#39;rvebuilder&#39;
+import React, { Component } from &#39;react&#39;
+
+import &#39;../src/theme/default.scss&#39;
+import { DevTools } from &#39;./util/DevTools&#39;
+import { init } from &#39;./util/render&#39;
+
+const rootReducer = combineReducers({
+  _rveBuilder: builderReducer
+})
+
+/**
+ *
+ * Step 2 of 2
+ * ...
+ * ...
+ * ...
+ *
+ */
+
+class YourWrapperComponent extends Component {
+
+  constructor (props) {
+    super(props)
+    this.state = {lang: &#39;en&#39;}
+
+    this.onSaveTemplate = this.onSaveTemplate.bind(this)
+
+    this.handleChangeLang = this.handleChangeLang.bind(this)
+  }
+
+  onSaveTemplate (template) {
+    // ...
+  }
+
+  handleChangeLang (e) {
+    this.setState({lang: e.target.dataset.lang})
+  }
+
+  render () {
+
+    let builderProps = {
+      onSaveTemplate: this.onSaveTemplate,
+      lang: this.state.lang
+    }
+
+    return (&lt;div&gt;
+      &lt;div className=&quot;text-center&quot;&gt;
+        &lt;br/&gt;
+        &lt;button
+          onClick={this.handleChangeLang}
+          data-lang=&quot;ru&quot;
+          className=&quot;btn btn-primary btn-xs&quot;&gt;
+          RU
+        &lt;/button&gt;
+        &lt;button
+          onClick={this.handleChangeLang}
+          data-lang=&quot;en&quot;
+          className=&quot;btn btn-primary btn-xs&quot;&gt;
+          EN
+        &lt;/button&gt;
+      &lt;/div&gt;
+      &lt;hr/&gt;
+      &lt;RVEBuilder {...builderProps}/&gt;
+    &lt;/div&gt;)
+  }
+}
+
+</code></pre>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<hr/>
+<footer class="footer text-center">
+  &copy; Eduard Titov <editied@gmail.com> (https://github.com/edtoken), <b><a target="_blank" href="https://github.com/edtoken/rvebuilder">rvebuilder</a></b>
+</footer>
+
+<script async defer src="//buttons.github.io/buttons.js"></script>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+<script type="text/javascript" src="example-basic-usage.bundle.js"></script></body>
+</html>
